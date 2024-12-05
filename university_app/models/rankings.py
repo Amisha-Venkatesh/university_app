@@ -13,5 +13,3 @@ class Rankings(db.Model):
     pub = db.Column(db.Integer, nullable=False)
     pcp = db.Column(db.Integer, nullable=False)
     total = db.Column(db.Integer, nullable=False)
-
-
