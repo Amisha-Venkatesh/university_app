@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Get Ranked Page{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Ranked</title>
+</head>
+<body>
+    <h1>Get Ranked</h1>
+    <form action="/submit" method="POST">
+        <input type="hidden" name="id" value="{{ record.id if record else '' }}">
+
+        <!-- University Name -->
+        <label>University Name:
+            <input type="text" name="name" value="{{ record.name if record else '' }}" required>
+        </label><br>
+
+        <!-- Region -->
+        <label>Region:
+            <input type="text" name="region" value="{{ record.region if record else '' }}" required>
+        </label><br>
+
+        <!-- Discipline -->
+        <label>Discipline:
+            <input type="text" name="discipline" value="{{ record.discipline if record else '' }}" required>
+        </label><br>
+
+        <!-- Specialized Rankings -->
+        <label>Specialized Rankings:
+            <input type="number" name="specialized_rankings" value="{{ record.specialized_rankings if record else '' }}" required>
+        </label><br>
+
+        <!-- Other Metrics -->
+        <label>Alumni:
+            <input type="number" name="alumni" value="{{ record.alumni if record else '' }}" required>
+        </label><br>
+        <label>Award:
+            <input type="number" name="award" value="{{ record.award if record else '' }}" required>
+        </label><br>
+        <label>Highly Cited Researchers:
+            <input type="number" name="hici" value="{{ record.hici if record else '' }}" required>
+        </label><br>
+        <label>Nature & Science:
+            <input type="number" name="n_s" value="{{ record.n_s if record else '' }}" required>
+        </label><br>
+        <label>Publications:
+            <input type="number" name="pub" value="{{ record.pub if record else '' }}" required>
+        </label><br>
+        <label>Per Capita Performance:
+            <input type="number" name="pcp" value="{{ record.pcp if record else '' }}" required>
+        </label><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+
+{% endblock %}
