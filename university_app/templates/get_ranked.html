@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block title %}Get Ranked Page{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Ranked</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #4A90E2;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 16px;
+            color: #ffffff;
+            display: block;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #133f72;
+            box-shadow: 0 0 4px rgba(74, 144, 226, 0.6);
+        }
+        button {
+            background-color: #ffffff;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Ranked</h1>
+        <form action="/submit" method="POST">
+            <input type="hidden" name="id" value="{{ record.id if record else '' }}">
+
+            <!-- University Name -->
+            <div class="form-group">
+                <label for="name">University Name:</label>
+                <input type="text" id="name" name="name" value="{{ record.name if record else '' }}" required>
+            </div>
+
+            <!-- Region -->
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="" disabled selected>Select a region</option>
+                    <option value="north-america" {% if record and record.region =="north-america" %}selected{% endif %}>North America</option>
+                    <option value="europe" {% if record and record.region =="europe" %}selected{% endif %}>Europe</option>
+                    <option value="asia" {% if record and record.region =="asia" %}selected{% endif %}>Asia</option>
+                </select>
+            </div>
+
+            <!-- Discipline -->
+            <div class="form-group">
+                <label for="discipline">Discipline:</label>
+                <select id="discipline" name="discipline" required>
+                    <option value="" disabled selected>Select a discipline</option>
+                    <option value="engineering" {% if record and record.discipline =="engineering" %}selected{% endif %}>Engineering</option>
+                    <option value="medicine" {% if record and record.discipline =="medicine" %}selected{% endif %}>Medicine</option>
+                    <option value="business" {% if record and record.discipline =="business" %}selected{% endif %}>Business</option>
+                </select>
+            </div>
+
+            <!-- Specialized Rankings -->
+            <div class="form-group">
+                <label for="specialized_rankings">Specialized Rankings:</label>
+                <select id="specialized_rankings" name="specialized_rankings" required>
+                    <option value="" disabled selected>Select a ranking</option>
+                    <option value="most-innovative" {% if record and record.specialized_rankings =="most-innovative" %}selected{% endif %}>Most Innovative</option>
+                    <option value="for-international-students" {% if record and record.specialized_rankings =="for-international-students" %}selected{% endif %}>For International Students</option>
+                    <option value="best-campus-facilities" {% if record and record.specialized_rankings =="best-campus-facilities" %}selected{% endif %}>Best Campus Facilities</option>
+                </select>
+            </div>
+
+            <!-- Other Metrics -->
+            <div class="form-group">
+                <label for="alumni">Alumni:</label>
+                <input type="number" id="alumni" name="alumni" value="{{ record.alumni if record else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="award">Award:</label>
+                <input type="number" id="award" name="award" value="{{ record.award if record else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hici">Highly Cited Researchers:</label>
+                <input type="number" id="hici" name="hici" value="{{ record.hici if record else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="n_s">Nature & Science:</label>
+                <input type="number" id="n_s" name="n_s" value="{{ record.n_s if record else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pub">Publications:</label>
+                <input type="number" id="pub" name="pub" value="{{ record.pub if record else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pcp">Per Capita Performance:</label>
+                <input type="number" id="pcp" name="pcp" value="{{ record.pcp if record else '' }}" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

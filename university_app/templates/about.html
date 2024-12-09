@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #333;
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #133f72;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #133f72;
+      font-size: 1.8rem;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    ul {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      padding-left: 20px;
+    }
+
+    .team {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      width: 250px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    .team-member h3 {
+      margin-top: 10px;
+      color: #133f72;
+    }
+
+    .team-member p {
+      font-size: 1rem;
+      color: #777;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="about-container">
+    <h1>About Us</h1>
+
+    <p>
+      Welcome to our platform! We are dedicated to providing you with the most accurate and up-to-date information about university rankings worldwide.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+      Our mission is to offer students, educators, and institutions a comprehensive tool for evaluating and comparing universities globally. Through detailed and transparent ranking systems, we aim to help users make informed decisions about higher education options.
+    </p>
+
+    <h2>Why Choose Us?</h2>
+    <p>
+      We stand out by providing a user-friendly interface combined with reliable data sources. Whether you're a student looking for the best university or an academic institution trying to boost its rankings, we offer the resources you need to succeed.
+    </p>
+
+    <h2>How We Calculate Rankings</h2>
+    <p>
+      Our ranking methodology considers multiple critical factors to ensure a fair and accurate assessment of each university. These factors include:
+    </p>
+    <ul>
+      <li><strong>Alumni Impact:</strong> The achievements and contributions of alumni in their respective fields.</li>
+      <li><strong>Awards:</strong> Prestigious awards received by faculty and alumni.</li>
+      <li><strong>Research Excellence (HiCi):</strong> The number of highly cited researchers affiliated with the university.</li>
+      <li><strong>Research Output (N&S):</strong> Publications in top-tier journals and conferences.</li>
+      <li><strong>Publications (PUB):</strong> The total volume of research articles published.</li>
+      <li><strong>Per Capita Performance (PCP):</strong> Performance metrics adjusted per faculty member.</li>
+    </ul>
+
+    <h2>Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+          <img src="static/image1.jpg" alt="Team Member 1">
+          <h3>Amisha V</h3>
+      </div>
+      <div class="team-member">
+          <img src="static/image2.jpg" alt="Team Member 2">
+          <h3>Bhavya D</h3>
+      </div>
+        <div class="team-member">
+          <img src="static/image3.jpg" alt="Team Member 3">
+          <h3>Akshaya K</h3>
+      </div>
+        <div class="team-member">
+          <img src="static/image4.jpg" alt="Team Member 4">
+          <h3>Shalini D</h3>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %}

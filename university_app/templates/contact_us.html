@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+
+  <!-- Add Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #133f72;
+      padding-top: 30px;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px;
+    }
+
+    .contact-form,
+    .contact-info {
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      width: 48%;
+    }
+
+    /* Contact Form Background */
+    .contact-form {
+      background: linear-gradient(135deg, #4A90E2, #357ABD);
+      color: #fff;
+    }
+
+    .contact-form label {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .contact-form button {
+      background-color: #fff;
+      color: #4A90E2;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #357ABD;
+      color: #fff;
+    }
+
+    /* Contact Info Background */
+    .contact-info {
+      background: linear-gradient(135deg, #4A90E2, #357ABD);
+      color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    h3.title {
+      color: #ffffff;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-info li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-info .icon {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-right: 15px;
+    }
+
+    .contact-info .text {
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+
+    .contact-info .text a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-info .text a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <h1>Contact Us</h1>
+
+  <div class="contact-wrapper">
+    <!-- Contact Form Section -->
+    <div class="contact-form">
+      <form action="{{ url_for('contact_us') }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="contact-info">
+      <h3 class="title">Contact Info</h3>
+      <ul>
+        <li>
+          <div class="icon">
+            <span class="material-icons-outlined">place</span>
+          </div>
+          <div class="text">
+            K S School of Engineering and Management, #15, Mallasandra, Off.Kanakapura Road, Bengaluru-560109
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <span class="material-icons-outlined">mail_outline</span>
+          </div>
+          <div class="text">
+            <a href="mailto:amishavamisha@gmail.com">amishavamisha@gmail.com</a>
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <span class="material-icons-outlined">phone_in_talk</span>
+          </div>
+          <div class="text">
+            9363252650
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}home page{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top University Rankings 2024</title>
+  <style>
+      /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #ffffff; /* Default text color */
+      background: rgba(0, 39, 77, 0.9); /* White background for body */
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #ffffff; /* Change hero text color to black */
+      position: relative;
+      background-image:url("/static/img.png");
+      background-repeat: no-repeat; /* Prevents the image from repeating */
+      background-size: cover; /* Ensures the image covers the entire section */
+      background-position: center; /* Centers the image */
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0); /* Overlay for slight darkening */
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center; /* This will ensure the paragraph is centered */
+    }
+
+    .hero .hero-btns a {
+      text-decoration: none;
+      color: #00274d;
+      background: #f4a261;
+      padding: 12px 25px;
+      border-radius: 5px;
+      margin: 0 10px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .hero .hero-btns a:hover {
+      background: #e76f51;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover the Top Universities of 2024</h1>
+      <p>Explore the world’s most prestigious universities ranked by academic excellence, innovation, and global impact.</p>
+      <div class="hero-btns">
+        <a href="/rankings">View Rankings</a>
+        <a href="/contact_us">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+{% endblock %}

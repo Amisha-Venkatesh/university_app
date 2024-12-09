@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}rankings page{% endblock %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8; /* Light blue-gray background */
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #003366; /* Dark blue color */
+    }
+
+    .search-bar {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .search-bar button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .search-bar button:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .not-found {
+        text-align: center;
+        color: #ff0000;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+
+<h1>University Rankings</h1>
+
+<!-- Search Bar -->
+<div class="search-bar">
+    <form method="GET" action="/rankings">
+        <input type="text" name="search" placeholder="Search university..." value="{{ search_query }}">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Rankings Table -->
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>University Name</th>
+            <th>Region</th>
+            <th>Discipline</th>
+            <th>Specialized Rankings</th>
+            <th>Alumni</th>
+            <th>Award</th>
+            <th>Hici</th>
+            <th>Nature & Science</th>
+            <th>Publications</th>
+            <th>PCP</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if data %}
+            {% for record in data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.region }}</td>
+                    <td>{{ record.discipline }}</td>
+                    <td>{{ record.specialized_rankings }}</td>
+                    <td>{{ record.alumni }}</td>
+                    <td>{{ record.award }}</td>
+                    <td>{{ record.hici }}</td>
+                    <td>{{ record.n_s }}</td>
+                    <td>{{ record.pub }}</td>
+                    <td>{{ record.pcp }}</td>
+                    <td>{{ record.total }}</td>
+                    <td>
+                        <a href="/edit/{{ record.id }}" style="color: #007bff; text-decoration: none;">Edit</a> |
+                        <a href="/delete/{{ record.id }}" style="color: #dc3545; text-decoration: none;">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="13" class="not-found">University not found</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Page{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 600px;
+            margin: auto;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 20px;
+            color: #133f72;
+            margin-bottom: 10px;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>University Dashboard: Regions</h1>
+        <canvas id="regionChart"></canvas>
+    </div>
+
+    <div class="container">
+        <h1>University Dashboard: Disciplines</h1>
+        <canvas id="disciplineChart"></canvas>
+    </div>
+
+    <script>
+        // Pass data from Flask to JavaScript
+        const data = {{ data | tojson }};
+
+        // Extract data for the region chart
+        const regions = data.regions;
+        const universityCounts = data.university_counts;
+        const averageScores = data.average_scores;
+
+        // Extract data for the discipline chart
+        const disciplines = data.disciplines;
+        const disciplineUniversityCounts = data.discipline_university_counts;
+
+        // Render region chart
+        const regionCtx = document.getElementById('regionChart').getContext('2d');
+        new Chart(regionCtx, {
+            type: 'bar',
+            data: {
+                labels: regions,
+                datasets: [
+                    {
+                        label: 'Number of Universities',
+                        data: universityCounts,
+                        backgroundColor: 'rgba(45, 142, 142, 0.9)',
+                        borderColor: 'rgba(45, 142, 142, 1)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Average Score',
+                        data: averageScores,
+                        backgroundColor: 'rgba(102, 51, 204, 0.9)',
+                        borderColor: 'rgba(102, 51, 204, 1)',
+                        borderWidth: 1,
+                    }
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            },
+        });
+
+        // Render discipline chart
+        const disciplineCtx = document.getElementById('disciplineChart').getContext('2d');
+        new Chart(disciplineCtx, {
+            type: 'pie',
+            data: {
+                labels: disciplines,
+                datasets: [
+                    {
+                        label: 'Number of Universities by Discipline',
+                        data: disciplineUniversityCounts,
+                        backgroundColor: [
+                            'rgba(204, 51, 51, 0.9)',
+                            'rgba(51, 102, 204, 0.9)',
+                            'rgba(204, 153, 0, 0.9)',
+                            'rgba(45, 142, 142, 0.9)',
+                            'rgba(102, 51, 204, 0.9)',
+                            'rgba(204, 102, 0, 0.9)',
+                        ],
+                        borderColor: [
+                            'rgba(204, 51, 51, 1)',
+                            'rgba(51, 102, 204, 1)',
+                            'rgba(204, 153, 0, 1)',
+                            'rgba(45, 142, 142, 1)',
+                            'rgba(102, 51, 204, 1)',
+                            'rgba(204, 102, 0, 1)',
+                        ],
+                        borderWidth: 1,
+                    }
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            },
+        });
+    </script>
+</body>
+</html>
+{% endblock %}
